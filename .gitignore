@@ -1,4 +1,3 @@
 node_modules
 src/utils/exec
-src/middleware
 .env
