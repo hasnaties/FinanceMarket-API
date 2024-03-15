@@ -1,10 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import Jwt from "jsonwebtoken";
 import Profile from "../models/profileModel.js";
 
 const auth = async (req, res, next) => {
   try {
     const token = req.header('Authorization').replace("Bearer ", "");
-    const decoded = Jwt.verify(token, "financemarket");
+    const decoded = Jwt.verify(token, process.env.SECRET_KEY);
     const profile = await Profile.findOne({ '_id': decoded._id, 'tokens.token': token });
 
     req.token = token;

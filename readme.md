@@ -1,4 +1,4 @@
-## Finance Market - API
+## Overview
 
 In the current state, the API offers service for three primary endpoint types:
 
