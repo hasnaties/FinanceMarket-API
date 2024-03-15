@@ -4,8 +4,8 @@ import { getProfile, loginProfile, updateLastActive } from '../utils/profileUtil
 
 const router = new express.Router();
 
-router.get('/api/profile', getProfile);
 router.post('/api/login', loginProfile);
+router.get('/api/profile', auth, getProfile);
 router.patch('/api/lastActive', auth, updateLastActive);
 
 export default router;

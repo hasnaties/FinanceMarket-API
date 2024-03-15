@@ -1,14 +1,8 @@
 import Profile from '../models/profileModel.js';
 
 export const getProfile = async (req, res) => {
-  const { _id } = req.body;
 
-  try {
-    const profile = await Profile.findById(_id);
-    res.status(200).json(profile);
-  } catch (error) {
-    res.status(404).json(error);
-  }
+  res.status(200).json(req.profile);
 };
 
 export const loginProfile = async (req, res) => {
@@ -30,7 +24,7 @@ export const updateLastActive = async (req, res) => {
     req.profile.lastActive = Date.now();
     await req.profile.save();
 
-    res.status(200).json({ profile: req.profile });
+    res.status(200).json(req.profile);
   } catch (error) {
     res.status(500).json({ error });
   }

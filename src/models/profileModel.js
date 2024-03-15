@@ -54,10 +54,9 @@ profileSchema.statics.findByCredentials = async (email, password) => {
 //instance method to generate and save JWT
 profileSchema.methods.generateAuthToken = async function () {
   const profile = this;
-  const token = Jwt.sign({ _id: profile._id.toString() }, 'financemarket');
+  const token = Jwt.sign({ _id: profile._id.toString() }, process.env.SECRET_KEY);
 
   profile.tokens = profile.tokens.concat({ token });
-  console.log(token);
   await profile.save();
 
   return token;
