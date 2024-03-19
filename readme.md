@@ -1,3 +1,15 @@
+### Code Refinement
+
+- Configuration Service for the app. (In progress)
+- Global Prefix for routes.
+- Project structure Changes
+  - Replaced Utils with Controllers
+  - Express application naming conventions
+  - AuthRouter for login endpoint
+- Single export file for all the routes.
+- Single export file for all the middlewares.
+- Handled database connection failure exception.
+
 ## Overview
 
 In the current state, the API offers service for three primary endpoint types:
