@@ -1,29 +1,22 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
-import cors from 'cors';
+import config from 'config';
 
-import profileRouter from './routers/profileRouter.js';
-import productRouter from './routers/productRouter.js';
-import blogRouter from './routers/blogRouter.js';
-
-import connectDB from './db/mongoose.js';
+import connectDB from './configs/mongoose.js';
+import router from './routes/routes.js';
+import middleware from './middlewares/index.js';
 
 //pre-exec
 connectDB();
 
-//Middleware
 const app = express();
-app.use(cors());
-app.use(express.json());
 
+//Middleware
+app.use(middleware);
 
-//Routes
-app.use(profileRouter);
-app.use(productRouter)
-app.use(blogRouter);
+//routes
+app.use('/api', router);
 
-const port = process.env.PORT;
+const port = config.get('app.port');
 app.listen(port, () => {
   console.log(`Server is up at port: ${port}`);
 })

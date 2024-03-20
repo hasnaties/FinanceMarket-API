@@ -14,7 +14,7 @@ export const loginProfile = async (req, res) => {
     res.status(200).json({ profile, token });
 
   } catch (error) {
-    res.status(400).json(error);
+    res.status(401).json({ error: "Unauthorized" });
   }
 };
 
