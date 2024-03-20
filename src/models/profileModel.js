@@ -1,3 +1,4 @@
+import c from "config";
 import mongoose from "mongoose";
 import Jwt from "jsonwebtoken";
 
@@ -54,7 +55,7 @@ profileSchema.statics.findByCredentials = async (email, password) => {
 //instance method to generate and save JWT
 profileSchema.methods.generateAuthToken = async function () {
   const profile = this;
-  const token = Jwt.sign({ _id: profile._id.toString() }, process.env.SECRET_KEY);
+  const token = Jwt.sign({ _id: profile._id.toString() }, c.get('app.secret_key'));
 
   profile.tokens = profile.tokens.concat({ token });
   await profile.save();

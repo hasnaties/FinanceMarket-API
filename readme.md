@@ -1,6 +1,6 @@
 ### Code Refinement
 
-- Configuration Service for the app. (In progress)
+- Configuration Service for the app.
 - Global Prefix for routes.
 - Project structure Changes
   - Replaced Utils with Controllers

@@ -1,8 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
+import config from 'config';
 
-import connectDB from './config/mongoose.js';
+import connectDB from './configs/mongoose.js';
 import router from './routes/routes.js';
 import middleware from './middlewares/index.js';
 
@@ -17,8 +16,7 @@ app.use(middleware);
 //routes
 app.use('/api', router);
 
-// console.log(process.env.NODE_ENV);
-const port = process.env.PORT;
+const port = config.get('app.port');
 app.listen(port, () => {
   console.log(`Server is up at port: ${port}`);
 })
